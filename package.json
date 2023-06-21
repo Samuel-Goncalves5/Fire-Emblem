@@ -1,0 +1,27 @@
+{
+  "name": "fire-emblem",
+  "version": "1.0.0",
+  "description": "Création d'un site grâce à React/Typescript sur des fonctionnalités liées à Fire Emblem.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samuel-Goncalves5/Fire-Emblem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samuel-Goncalves5/Fire-Emblem/issues"
+  },
+  "homepage": "https://github.com/Samuel-Goncalves5/Fire-Emblem#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.8.1"
+  }
+}

@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      Work in progress
+      Work in progress?
     </div>
   );
 }

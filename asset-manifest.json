@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Fire-Emblem/static/css/main.0a9dbc9e.css",
+    "main.js": "/Fire-Emblem/static/js/main.2cbf6ab5.js",
+    "static/js/787.92196498.chunk.js": "/Fire-Emblem/static/js/787.92196498.chunk.js",
+    "index.html": "/Fire-Emblem/index.html",
+    "main.0a9dbc9e.css.map": "/Fire-Emblem/static/css/main.0a9dbc9e.css.map",
+    "main.2cbf6ab5.js.map": "/Fire-Emblem/static/js/main.2cbf6ab5.js.map",
+    "787.92196498.chunk.js.map": "/Fire-Emblem/static/js/787.92196498.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0a9dbc9e.css",
+    "static/js/main.2cbf6ab5.js"
+  ]
+}

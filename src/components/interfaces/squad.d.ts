@@ -3,6 +3,7 @@ export interface SquadData {
     squad: null;
 
     nom: string;
+    image: string;
     
     dégats: number;
     précision: number;

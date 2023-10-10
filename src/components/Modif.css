@@ -1,0 +1,127 @@
+.table {
+    display: table;
+    width: 100%;
+
+    margin-bottom: 10px;
+}
+
+.table .etiquettes {
+    display: table-cell;
+    width: 20%;
+
+    padding: 0;
+    margin: 0;
+
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table .inputs {
+    display: table-cell;
+    width: 50%;
+
+    padding: 0;
+    margin: 0;
+
+    vertical-align: middle;
+}
+
+.table .etiquettes div {
+    margin-top: 10px;
+    margin-right: 30px;
+
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 10px;
+
+    background-color: rgb(50, 50, 50);
+    color: #ccc;
+
+    line-height: 20px;
+}
+
+.table .inputs input {
+    margin-top: 13px;
+
+    padding-left: 3px;
+
+    width: 200px;
+    height: 15px;
+
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 10px;
+}
+.table .inputs .image-div {
+    margin-top: 13px;
+
+    width: 204px;
+    height: 16px;
+
+    border: 1px solid rgb(75, 75, 75);
+    border-radius: 10px;
+}
+
+.choix-image {
+    display: block;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    padding-left: 3px;
+}
+
+.table img {
+    display: table-cell;
+
+    width: 100px;
+    height: 100px;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    background-color: rgb(50, 50, 50);
+
+    vertical-align: middle;
+    text-align: left;
+}
+
+.resume {
+    display: table-cell;
+    text-align: center;
+}
+
+.resume img {
+    margin: 10px 0;
+}
+
+.resume>div {
+    background-color: rgb(50, 50, 50);
+    color: #ccc;
+
+    border: 1px solid black;
+    border-radius: 10px;
+
+    margin: 0 50px;
+    padding: 10px;
+}
+
+.stats {
+    display: grid;
+    gap: 10px;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    vertical-align: middle;
+    text-align: left;
+}
+
+@media screen and (max-width: 830px) {
+    .stats {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 5px;
+    }
+}
+
+#error {
+    background-color: rgb(92, 30, 30);
+}

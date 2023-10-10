@@ -3,6 +3,7 @@ export interface WeaponData {
     weapon: null;
 
     nom: string;
+    image: string;
 
     dommages: number;
     critiques: number;

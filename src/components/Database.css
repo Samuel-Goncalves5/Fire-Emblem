@@ -1,0 +1,180 @@
+.personnages {
+    display: block;
+  
+    color: #ccc;
+    background-color: rgb(50, 50, 50);
+    border-color: white;
+  
+    text-align: center;
+    text-decoration: none;
+  
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    line-height: 70px;
+  
+    transition: .2s;
+}
+
+.personnages:hover {
+  background: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+.armes {
+    display: block;
+  
+    color: #ccc;
+    background-color: rgb(50, 50, 50);
+    border-color: white;
+  
+    text-align: center;
+    text-decoration: none;
+  
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    line-height: 70px;
+  
+    transition: .2s;
+}
+
+.armes:hover {
+    background: rgb(75, 75, 75);
+    cursor: pointer;
+}
+
+.escouades {
+    display: block;
+  
+    color: #ccc;
+    background-color: rgb(50, 50, 50);
+    border-color: white;
+  
+    text-align: center;
+    text-decoration: none;
+  
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    line-height: 70px;
+  
+    transition: .2s;
+}
+
+.escouades:hover {
+    background: rgb(75, 75, 75);
+    cursor: pointer;
+}
+
+.base-de-donnee ul {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    padding: 0 20px;
+
+    grid-template-columns: repeat(3, 1fr);
+  
+    transition: .2s;
+}
+
+@media screen and (max-width: 830px) {
+    .base-de-donnee ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.ajout-bouton {
+    background-color: rgb(50, 50, 50);
+    color: #ccc;
+
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(75, 75, 75);
+  
+    transition: .2s;
+}
+
+.ajout-bouton:hover {
+  background-color: rgb(75, 75, 75);
+}
+
+.nom {
+    display: inline;
+}
+
+.moins {
+    border: none;
+    border-radius: 10px;
+
+    background-color: rgb(25, 25, 25);
+    color: #ccc;
+
+    line-height: 50px;
+
+    transition: .2s;
+}
+
+.modif {
+    border: none;
+    border-radius: 10px;
+
+    background-color: rgb(25, 25, 25);
+    color: #ccc;
+
+    margin-bottom: 5px;
+
+    line-height: 50px;
+  
+    transition: .2s;
+}
+
+.modif:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+.moins:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+.element {
+    display: table;
+    width: 100%;
+
+    background-color: rgb(50, 50, 50);
+    color: #ccc;
+
+    border: 3px solid rgb(75, 75, 75);
+    border-radius: 10px;
+}
+
+.element img {
+    display: table-cell;
+
+    width: 100px;
+    height: 100px;
+
+    vertical-align: middle;
+
+    margin-right: 5px;
+
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.element .text {
+    display: table-cell;
+    vertical-align:middle;
+}
+
+.element .boutons {
+    display: table-cell;
+    
+    vertical-align: middle;
+
+    text-align: right;
+}

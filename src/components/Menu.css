@@ -1,0 +1,76 @@
+
+.header {
+  overflow: hidden;
+  background-color: hsl(0, 0%, 5%);
+  padding: 20px 10px;
+}
+
+.header button {
+  float: left;
+
+  color: #ccc;
+  background-color: rgb(50, 50, 50);
+  border-color: white;
+
+  margin-left: 5px;
+
+  padding-left: 12px;
+  padding-right: 12px;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 70px;
+
+  border-radius: 3%;
+  transition: .2s;
+}
+
+.header button:hover {
+  background: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+.header button.active {
+  border-color: crimson;
+}
+
+.header-left {
+  font-size: 25px;
+  font-weight: bold;
+
+  color: white;
+  cursor: pointer;
+
+  float: left;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 4px;
+}
+
+.header-left img {
+  height: 60px;
+  vertical-align: middle;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 830px) {
+  .header button {
+    float: none;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .header-right {
+    float: none;
+  }
+
+  .header-left {
+    float: none;
+    display: block;
+  }
+}

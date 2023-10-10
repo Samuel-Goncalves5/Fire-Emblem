@@ -3,6 +3,7 @@ import { DatabaseData } from "./interfaces/databaseData";
 import { CharacterData } from "./interfaces/character";
 import { SquadData } from "./interfaces/squad";
 import { WeaponData } from "./interfaces/weapon";
+import { isCharacterDataValid, isDatabaseDataValid, isSquadDataValid, isWeaponDataValid } from "./interfaces/typeTest";
 
 export interface DatabaseContextData {
     database: DatabaseData;
@@ -24,7 +25,9 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
     const [database, setDatabase] = useState<DatabaseData>({
         characters:[],
         weapons:[],
-        squads:[]
+        squads:[],
+        selected:undefined,
+        selectedType:undefined,
     });
 
     const updateDatabase = (update: CharacterData | SquadData | WeaponData | DatabaseData) => {
@@ -32,14 +35,12 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
             const characters = [...database.characters];
             const index = characters.findIndex((character) => character.id === update.id);
 
-
             console.log(update)
 
             if (index === -1)
                 characters.push(update);
             else
                 characters[index] = update;
-            
             
             setDatabase({...database, characters});
         };
@@ -66,16 +67,29 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
             setDatabase({...database, weapons});
         };
 
+
         if ("character" in update) {
-            updateCharacter(update);
+            if (isCharacterDataValid(update))
+                updateCharacter(update);
+            else
+                console.log("INVALD CHARACTER:", update);
         }
         else if ("squad" in update) {
-            updateSquad(update);
+            if (isSquadDataValid(update))
+                updateSquad(update);
+            else
+                console.log("INVALD SQUAD:", update);
         }
         else if ("weapon" in update) {
-            updateWeapon(update);
+            if (isWeaponDataValid(update))
+                updateWeapon(update);
+            else
+                console.log("INVALD WEAPON:", update);
         } else {
-            setDatabase({...update});
+            if (isDatabaseDataValid(update))
+                setDatabase({...update});
+            else
+                console.log("INVALD DATABASE:", update);
         }
     };
 
@@ -126,7 +140,7 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
     }
 
     const getSelected = () => {
-        return database.selectedType && database.selected ? database[database.selectedType][database.selected] : undefined;
+        return database.selectedType !== undefined && database.selected !== undefined ? database[database.selectedType][database.selected] : undefined;
     }
 
     return (

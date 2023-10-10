@@ -6,17 +6,11 @@ import { useDatabase } from "./useDatabase";
 
 function SousMenu({id} : {id:number})
 {
-  const {database} = useDatabase();
+  const {getSelected} = useDatabase();
   
   switch (id) {
     case 1:
-      return (
-        <>
-          <Modif />
-          <Database />
-          <p>{JSON.stringify(database.selected)}</p>
-        </>
-      );
+      return getSelected() ? <Modif /> : <Database />;
     case 2:
       return <LoadAndSave />
     case 3:

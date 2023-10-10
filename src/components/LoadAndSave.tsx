@@ -1,10 +1,12 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import './LoadAndSave.css';
 import { useDatabase } from './useDatabase';
 import { DatabaseData } from './interfaces/databaseData';
+import { isDatabaseDataValid } from './interfaces/typeTest';
 
 function LoadAndSave() {
     const {database, updateDatabase} = useDatabase();
+    const [loadState, updateLoadState] = useState(0);
 
     function createTextFile(content: string, fileName: string) {
         const element = document.createElement('a');
@@ -33,7 +35,16 @@ function LoadAndSave() {
 
                     try {
                         const parsedData : DatabaseData = JSON.parse(content);
-                        updateDatabase(parsedData);
+                        if (isDatabaseDataValid(parsedData))
+                        {
+                            updateDatabase(parsedData);
+                            updateLoadState(1);
+                        }
+                        else
+                        {
+                            console.log("INVALD DATABASE:", parsedData);
+                            updateLoadState(2);
+                        }
                     } catch (error) {
                         console.error("Erreur lors de la lecture du fichier JSON :", error);
                     }
@@ -46,21 +57,26 @@ function LoadAndSave() {
     
 
     return (
-        <>
-            <br/><br/>
-            
-            <input
+        <div className='charger-sauvegarder'>
+            <div>
+                <label htmlFor="charger" className="bouton-charger" id={loadState === 1 ? 'loaded' : loadState === 2 ? 'error' : ''}>
+                    Charger
+                </label>
+                <input
                 type="file"
                 accept=".json"
+                id="charger"
                 onChange={handleUpload}
-            />
-            
-            <br/><br/>
-            
-            <button onClick={handleDownload}>
-                Télécharger
-            </button>
-        </>
+                style={{ display: 'none' }}
+                />
+            </div>
+
+            <div>
+                <div onClick={handleDownload} className='bouton-sauvegarder'>
+                    Sauvegarder
+                </div>
+            </div>
+        </div>
     );
 }
 

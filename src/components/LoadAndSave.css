@@ -1,0 +1,54 @@
+.bouton-charger {
+  display: block;
+
+  color: #ccc;
+  background-color: rgb(50, 50, 50);
+  border-color: white;
+
+  text-align: center;
+  text-decoration: none;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  line-height: 70px;
+
+  transition: .2s;
+}
+
+.bouton-charger:hover {
+  background: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+.bouton-charger#loaded {
+  background-color: rgb(42, 92, 30);
+}
+
+.bouton-charger#error {
+  background-color: rgb(92, 30, 30);
+}
+
+.bouton-sauvegarder {
+  display: block;
+
+  color: #ccc;
+  background-color: rgb(50, 50, 50);
+  border-color: white;
+
+  text-align: center;
+  text-decoration: none;
+
+  line-height: 70px;
+
+  transition: .2s;
+}
+
+.bouton-sauvegarder:hover {
+  background: rgb(75, 75, 75);
+  cursor: pointer;
+}
+
+.charger-sauvegarder {
+  font-size: 18px;
+}

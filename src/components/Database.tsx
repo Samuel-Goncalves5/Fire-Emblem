@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Bouton from "./Bouton";
 
 import './Database.css'
 import { useDatabase } from "./useDatabase";
@@ -15,6 +14,7 @@ function Database() {
             character: null,
 
             nom: "nom",
+            image: "",
 
             vie:0, attaque:0, magie:0, technique:0,
             vitesse:0, chance:0, défense:0, charisme:0,
@@ -28,6 +28,7 @@ function Database() {
             weapon: null,
 
             nom: "arme",
+            image: "",
             
             critiques:0, dommages:0, poids:0,
             précision:0, durabilité:0,
@@ -42,6 +43,7 @@ function Database() {
             squad: null,
 
             nom: "escouade",
+            image: "",
 
             dégats:0, précision:0, tactique:0,
             
@@ -50,57 +52,96 @@ function Database() {
     }
 
     return (
-        <>
-            <br/><br/>
-            
-            <Bouton
-                content="Personnages"
-                onClick={() => {setValue([!value[0], value[1], value[2]])}}
-            />
-
-            {value[0] && database.characters.map((character, index) =>
-            <div key={index}>
-                {character.nom}
-                <Bouton content="-" onClick={() => {setSelected(); removeFromDatabase(character)}}/>
-                <Bouton content="✎" onClick={() => {setSelected(character.id, "characters")}}/>
+        <div className="base-de-donnee">
+            <div className="personnages" onClick={() => {setValue([!value[0], value[1], value[2]])}}>
+                Personnages
             </div>
-            )}
-            {value[0] && <Bouton content="+" onClick={() => addCharacter()}/>}
-            
-            <br/><br/>
-            
-            <Bouton
-                content="Armes"
-                onClick={() => {setValue([value[0], !value[1], value[2]])}}
-            />
 
-            {value[1] && database.weapons.map((weapon, index) =>
-            <div key={index}>
-                {weapon.nom}
-                <Bouton content="-" onClick={() => {setSelected(); removeFromDatabase(weapon)}}/>
-                <Bouton content="✎" onClick={() => {setSelected(weapon.id, "weapons")}}/>
+            <ul className="personnages-list">
+                {value[0] && database.characters.map((character, index) =>
+                <li key={index}>
+                    <div className="element">
+                        <img src={character.image}/>
+                        <div className="text">
+                            <div className="nom">
+                                {character.nom}
+                                <br/><br/>
+                                <strong>({character.vie + character.attaque + character.magie + character.technique + character.vitesse + character.chance + character.défense + character.charisme + character.résistance})</strong>
+                            </div>
+                        </div>
+                        <div className="boutons">
+                            <button className="modif" onClick={() => {setSelected(character.id, "characters")}}>
+                                Modifier...
+                            </button>
+                            <br />
+                            <button className="moins" onClick={() => {setSelected(); removeFromDatabase(character)}}>
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                )}
+                {value[0] && <li className="ajout"><button className="ajout-bouton" onClick={() => addCharacter()}>+</button></li>}
+            </ul>
+
+            <div className="armes" onClick={() => {setValue([value[0], !value[1], value[2]])}}>
+                Armes
             </div>
-            )}
-            {value[1] && <Bouton content="+" onClick={() => addWeapon()}/>}
 
-            <br/><br/>
+            <ul className="armes-list">
+                {value[1] && database.weapons.map((weapon, index) =>
+                <li key={index}>
+                    <div className="element">
+                        <img src={weapon.image}/>
+                        <div className="text">
+                            <div className="nom">
+                                {weapon.nom}
+                            </div>
+                        </div>
+                        <div className="boutons">
+                            <button className="modif" onClick={() => {setSelected(weapon.id, "weapons")}}>
+                                Modifier...
+                            </button>
+                            <br />
+                            <button className="moins" onClick={() => {setSelected(); removeFromDatabase(weapon)}}>
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                )}
+                {value[1] && <li className="ajout"><button className="ajout-bouton" onClick={() => addWeapon()}>+</button></li>}
+            </ul>
 
-            <Bouton
-                content="Escouades"
-                onClick={() => {setValue([value[0], value[1], !value[2]])}}
-            />
-
-            {value[2] && database.squads.map((squad, index) =>
-            <div key={index}>
-                {squad.nom}
-                <Bouton content="-" onClick={() => {setSelected(); removeFromDatabase(squad)}}/>
-                <Bouton content="✎" onClick={() => {setSelected(squad.id, "squads")}}/>
+            <div className="escouades" onClick={() => {setValue([value[0], value[1], !value[2]])}}>
+                Escouades
             </div>
-            )}
-            {value[2] && <Bouton content="+" onClick={() => addSquad()}/>}
 
-            {JSON.stringify(database)}
-        </>
+            <ul className="escouades-list">
+                {value[2] && database.squads.map((squad, index) =>
+                <li key={index}>
+                    <div className="element">
+                        <img src={squad.image}/>
+                        <div className="text">
+                            <div className="nom">
+                                {squad.nom}
+                            </div>
+                        </div>
+                        <div className="boutons">
+                            <button className="modif" onClick={() => {setSelected(squad.id, "squads")}}>
+                                Modifier...
+                            </button>
+                            <br />
+                            <button className="moins" onClick={() => {setSelected(); removeFromDatabase(squad)}}>
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                )}
+                {value[2] && <li className="ajout"><button className="ajout-bouton" onClick={() => addSquad()}>+</button></li>}
+            </ul>
+        </div>
     );
 }
 

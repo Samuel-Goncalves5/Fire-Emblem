@@ -3,6 +3,7 @@ export interface CharacterData {
     character: null;
 
     nom: string;
+    image: string;
 
     vie: number;
     attaque: number;

@@ -1,0 +1,137 @@
+#haut {
+    display: flex;
+}
+
+#gauche {
+    background-color: #020074;
+    float: left;
+
+    width: 42.5%;
+}
+
+#centre {
+    background: linear-gradient(to right, #020074, #740000);
+    float: left;
+
+    width: 15%;
+}
+
+#droite {
+    background-color: #740000;
+    float: left;
+
+    width: 42.5%;
+}
+
+#centre > div {
+    color: white;
+    background-color: #3B003A;
+    border-radius: 10px;
+    border: 5px solid antiquewhite;
+}
+
+#centre #name {
+    margin-bottom: 5px;
+}
+
+#centre .left {
+    text-align: center;
+    width: 42.5%;
+}
+
+#centre .middle {
+    text-align: center;
+    width: 15%;
+}
+
+#centre .right {
+    text-align: center;
+    width: 42.5%;
+}
+
+#dégats {
+    margin-top: 125px;
+}
+
+#précision {
+    margin-top: 50px;
+}
+
+#critique {
+    margin-top: 50px;
+}
+
+#bas {
+    background-color: antiquewhite;
+}
+
+.selects select {
+    background-color: antiquewhite;
+    display: block;
+
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5px;
+
+    border-radius: 10px;
+}
+
+.image-affichage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-affichage img {
+    width: 100px;
+    height: 100px;
+
+    margin-top: 10px;
+
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.affichage .stats {
+    background-color: antiquewhite;
+
+    margin: 10px 20%;
+
+    border-radius: 10px;
+    border: 5px solid rgb(206, 192, 173)
+}
+
+.true-life {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    border: 5px solid rgb(206, 192, 173);
+    
+    display: inline-block;
+    margin: 10px auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bouton-simulateur {
+  display: block;
+
+  color: #ccc;
+  background-color: rgb(50, 50, 50);
+  border-color: white;
+
+  text-align: center;
+  text-decoration: none;
+
+  line-height: 70px;
+
+  transition: .2s;
+}
+
+.bouton-simulateur:hover {
+  background: rgb(75, 75, 75);
+  cursor: pointer;
+}

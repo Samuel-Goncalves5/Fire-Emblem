@@ -1,4 +1,4 @@
-import Bouton from "./Bouton";
+import logo from '../ressources/logo.png'
 import "./Menu.css"
 
 function Menu(
@@ -13,17 +13,24 @@ function Menu(
     const buttons = ["Base de donnée", "Charger / Sauvegarder", "Simulateur"];
 
     return (
-    <>
-    {
-        buttons.map((value, index) =>
-            <Bouton
-                key={index}
-                content={value}
-                onClick={set(index + 1)}
-            />
-        )
-    }
-    </>
+    <div className="header">
+        <div className="header-left" onClick={set(0)}>
+            <img alt="Fire Emblem Calculator" src={logo}/>
+        </div>
+        <div className="header-right">
+        {
+            buttons.map((content, index) =>
+                <button
+                  key={index}
+                  className={value === index + 1 ? "active" : "inactive"}
+                  onClick={set(index + 1)}
+                >
+                    {content}
+                </button>
+            )
+        }
+        </div>
+    </div>
     );
 }
 

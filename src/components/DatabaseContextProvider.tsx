@@ -7,7 +7,7 @@ import { isCharacterDataValid, isDatabaseDataValid, isSquadDataValid, isWeaponDa
 
 export interface DatabaseContextData {
     database: DatabaseData;
-    updateDatabase: (update: CharacterData | SquadData | WeaponData | DatabaseData) => void;
+    updateDatabase: (update: CharacterData | SquadData | WeaponData | DatabaseData, add?: boolean) => void;
     removeFromDatabase: (remove: CharacterData | SquadData | WeaponData) => void;
     setSelected: (selected?: number, selectedType?: "characters" | "squads" | "weapons") => void;
     getSelected: () => CharacterData | SquadData | WeaponData | undefined;
@@ -30,7 +30,9 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
         selectedType:undefined,
     });
 
-    const updateDatabase = (update: CharacterData | SquadData | WeaponData | DatabaseData) => {
+    const updateDatabase = (update: CharacterData | SquadData | WeaponData | DatabaseData, add: boolean=false) => {
+        console.log(add);
+
         const updateCharacter = (update: CharacterData) => {
             const characters = [...database.characters];
             const index = characters.findIndex((character) => character.id === update.id);
@@ -85,12 +87,20 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
                 updateWeapon(update);
             else
                 console.log("INVALD WEAPON:", update);
-        } else {
-            if (isDatabaseDataValid(update))
-                setDatabase({...update});
-            else
-                console.log("INVALD DATABASE:", update);
         }
+        else if (isDatabaseDataValid(update))
+        {
+            if (add)
+                setDatabase(
+                    {characters:[...database.characters, ...update.characters],
+                     weapons:[...database.weapons, ...update.weapons],
+                     squads:[...database.squads, ...update.squads]
+                    });
+            else
+                setDatabase({...update});
+        }
+        else
+            console.log("INVALD DATABASE:", update);
     };
 
     const removeFromDatabase = (remove: CharacterData | SquadData | WeaponData) => {

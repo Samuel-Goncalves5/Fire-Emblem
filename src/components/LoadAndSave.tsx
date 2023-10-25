@@ -54,19 +54,64 @@ function LoadAndSave() {
             reader.readAsText(file);
         }
     };
+
+    const handleAdd = (event: ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                if (e.target) {
+                    const content = e.target.result as string;
+
+                    try {
+                        const parsedData : DatabaseData = JSON.parse(content);
+                        if (isDatabaseDataValid(parsedData))
+                        {
+                            updateDatabase(parsedData, true);
+                            updateLoadState(3);
+                        }
+                        else
+                        {
+                            console.log("INVALD DATABASE:", parsedData);
+                            updateLoadState(4);
+                        }
+                    } catch (error) {
+                        console.error("Erreur lors de la lecture du fichier JSON :", error);
+                    }
+                }
+            };
+
+            reader.readAsText(file);
+        }
+    };
     
 
     return (
         <div className='charger-sauvegarder'>
             <div>
-                <label htmlFor="charger" className="bouton-charger" id={loadState === 1 ? 'loaded' : loadState === 2 ? 'error' : ''}>
-                    Charger
+                <label htmlFor="ecraser" className="bouton-charger" id={loadState === 1 ? 'loaded' : loadState === 2 ? 'error' : ''}>
+                    Ecraser
                 </label>
                 <input
                 type="file"
                 accept=".json"
-                id="charger"
+                id="ecraser"
                 onChange={handleUpload}
+                style={{ display: 'none' }}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="ajouter" className="bouton-charger" id={loadState === 3 ? 'loaded' : loadState === 4 ? 'error' : ''}>
+                    Ajouter
+                </label>
+                <input
+                type="file"
+                accept=".json"
+                id="ajouter"
+                onChange={handleAdd}
                 style={{ display: 'none' }}
                 />
             </div>

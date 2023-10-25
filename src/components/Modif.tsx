@@ -147,7 +147,7 @@ function Modif() {
                 {
                     ("character" in (database[database.selectedType][database.selected] as any)) ?
                         <>
-                            <img src={(database[database.selectedType][database.selected] as any).image}/>
+                            <img src={(database[database.selectedType][database.selected] as any).image} onClick={() => handleInputChange("image", "")}/>
                             <div>
                                 <strong>{(database[database.selectedType][database.selected] as any).nom}</strong>
                                 <br/><br/>

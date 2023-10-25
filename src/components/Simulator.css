@@ -23,13 +23,6 @@
     width: 42.5%;
 }
 
-#centre > div {
-    color: white;
-    background-color: #3B003A;
-    border-radius: 10px;
-    border: 5px solid antiquewhite;
-}
-
 #centre #name {
     margin-bottom: 5px;
 }
@@ -49,15 +42,67 @@
     width: 42.5%;
 }
 
+#mode {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 50px;
+}
+
+#mode .selected {
+    background-color: forestgreen;
+    transition: 0.1s;
+
+    width: 55px;
+    height: 55px;
+
+    padding: 3px;
+    border-radius: 5px;
+
+    z-index: 1;
+}
+
+#mode .not-selected {
+    background-color: firebrick;
+    transition: 0.1s;
+
+    width: 40px;
+    height: 40px;
+
+    padding: 3px;
+    border-radius: 5px;
+    
+    z-index: 1;
+}
+
+#mode .not-selected:hover {
+    background-color: rgb(176, 73, 73);
+    width: 45px;
+    height: 45px;
+}
+
 #dégats {
-    margin-top: 125px;
+    color: white;
+    background-color: #3B003A;
+    border-radius: 10px;
+    border: 5px solid antiquewhite;
+    margin-top: 50px;
 }
 
 #précision {
+    color: white;
+    background-color: #3B003A;
+    border-radius: 10px;
+    border: 5px solid antiquewhite;
     margin-top: 50px;
 }
 
 #critique {
+    color: white;
+    background-color: #3B003A;
+    border-radius: 10px;
+    border: 5px solid antiquewhite;
     margin-top: 50px;
 }
 
@@ -90,6 +135,8 @@
 
     border-radius: 10px;
     border: 3px solid black;
+    
+    z-index: 1;
 }
 
 .affichage .stats {
@@ -108,6 +155,8 @@
     
     display: inline-block;
     margin: 10px auto;
+
+    z-index: 1;
 }
 
 .center {
@@ -134,4 +183,22 @@
 .bouton-simulateur:hover {
   background: rgb(75, 75, 75);
   cursor: pointer;
+}
+
+#logs {
+    padding-left: 10px;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#logs .critique {
+    color: red;
+}
+
+#logs .échec {
+    color: blue;
+}
+
+#logs .normal {
+    color: black;
 }

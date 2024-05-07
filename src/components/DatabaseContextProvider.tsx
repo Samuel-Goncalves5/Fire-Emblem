@@ -31,13 +31,9 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
     });
 
     const updateDatabase = (update: CharacterData | SquadData | WeaponData | DatabaseData, add: boolean=false) => {
-        console.log(add);
-
         const updateCharacter = (update: CharacterData) => {
             const characters = [...database.characters];
             const index = characters.findIndex((character) => character.id === update.id);
-
-            console.log(update)
 
             if (index === -1)
                 characters.push(update);
@@ -90,12 +86,57 @@ function DatabaseContextProvider({ children }: { children: React.ReactNode }) {
         }
         else if (isDatabaseDataValid(update))
         {
-            if (add)
+            if (add) {
+                const characters = [...database.characters];
+                const weapons = [...database.weapons];
+                const squads = [...database.squads];
+
+                const new_characters = [...update.characters];
+                const new_weapons = [...update.weapons];
+                const new_squads = [...update.squads];
+
+                for (const new_character of new_characters) {
+                    const index = characters.findIndex((character) => character.nom === new_character.nom);
+
+                    if (index === -1) {
+                        new_character.id = characters.length;
+                        characters.push(new_character);
+                    } else {
+                        new_character.id = index;
+                        characters[index] = new_character;
+                    }
+                }
+
+                for (const new_weapon of new_weapons) {
+                    const index = weapons.findIndex((weapon) => weapon.nom === new_weapon.nom);
+
+                    if (index === -1) {
+                        new_weapon.id = weapons.length;
+                        weapons.push(new_weapon);
+                    } else {
+                        new_weapon.id = index;
+                        weapons[index] = new_weapon;
+                    }
+                }
+
+                for (const new_squad of new_squads) {
+                    const index = squads.findIndex((squad) => squad.nom === new_squad.nom);
+
+                    if (index === -1) {
+                        new_squad.id = squads.length;
+                        squads.push(new_squad);
+                    } else {
+                        new_squad.id = index;
+                        squads[index] = new_squad;
+                    }
+                }
+
                 setDatabase(
-                    {characters:[...database.characters, ...update.characters],
-                     weapons:[...database.weapons, ...update.weapons],
-                     squads:[...database.squads, ...update.squads]
+                    {characters:characters,
+                     weapons:weapons,
+                     squads:squads
                     });
+            }
             else
                 setDatabase({...update});
         }
